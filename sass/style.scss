@@ -1,0 +1,138 @@
+@import "compass";
+@import "compass/reset";
+@import "susy";
+
+/*==========  Colors  ==========*/
+
+// grays
+$black:             #000;
+$grayDarker:        lighten($black, 15%);
+$grayDark:          lighten($black, 25%);
+$gray:              lighten($black, 50%);
+$grayLight:         lighten($black, 70%);
+$grayLighter:       lighten($black, 90%);
+$white:             #eee;
+
+// project-specific colors
+$yellow:            #f1c40f;
+$blue:              #3498db;
+
+/*==========  Typography  ==========*/
+
+// base font size
+$base-font-size: 16px;
+// base line height
+$base-line-height: 22px;
+
+// apply the above to <body>
+@include establish-baseline;
+
+// typefaces
+$sans:              Helvetica, sans-serif;
+$serif:             Georgia, serif;
+$mono:              'Inconsolata', Courier, monospace;
+
+a{
+  color: $blue;
+
+  &:hover{
+    color: lighten($blue, 5%);
+  }
+}
+
+
+/*==========  Grid  ==========*/
+
+$susy: (
+  columns: 12,
+  gutters: 1/2,
+  column-width: 3em
+);
+
+
+/*==========  Layout  ==========*/
+
+body{
+  font-family: $mono;
+  padding-bottom:4em;
+  color: $grayDarker;
+}
+
+main{
+  @include container;
+}
+
+.intro{
+  text-align:center;
+  margin-top:2em;
+  h1{
+    margin-bottom:1em;
+    font-weight:bold;
+    background: $yellow;
+    display:inline-block;
+    padding: .125em 1em;
+  }
+}
+
+.result{
+  text-align:center;
+  padding:3em 0;
+
+  .code{
+    display:block;
+    font-size: 14em;
+    line-height:.8em;
+  }
+
+  .label{
+    display:block;
+    color: $grayLight;
+    display:inline-block;
+    vertical-align:middle;
+  }
+
+}
+
+.reference{
+  @include container;
+  table{
+    @include span(4);
+
+    &:last-child{
+      @include last;
+    }
+
+    tr{
+      border-bottom: 1px solid $grayLighter;
+
+      &:first-child{
+        background:$grayLighter;
+        td{
+          font-weight: 700;
+        }
+      }
+
+      td{
+        padding:.25em .75em;
+
+        &:last-child{
+          text-align:right;
+        }
+      }
+    }
+  }
+}
+
+.about{
+  @include container;
+  margin-top:4em;
+
+  h2{
+    font-weight:700;
+    margin-top:2em;
+  }
+
+  p{
+    margin-top:1em;
+  }
+}
